@@ -32,14 +32,13 @@ def on_button_pressed_b():
             pass
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
+score = 0
 random = 0
 die = 0
 p_pos_x = 0
 p_pos_y = 0
 p_pos_y = 4
 p_pos_x = 2
-score = 0
-die = 0
 
 def on_every_interval():
     global random, die, score
@@ -164,7 +163,13 @@ def on_every_interval():
 loops.every_interval(1000, on_every_interval)
 
 def on_forever():
+    global die
     led.plot(p_pos_x, p_pos_y)
     if die == 1:
-        print ("score:", score)
+        basic.show_string("score")
+        basic.show_number(score)
+        basic.pause(1000)
+        basic.clear_screen()
+        basic.pause(1000)
+        die = 0
 basic.forever(on_forever)
