@@ -44,10 +44,12 @@ input.onButtonPressed(Button.B, function on_button_pressed_b() {
 let score = 0
 let random = 0
 let die = 0
+let π = 0
 let p_pos_x = 0
 let p_pos_y = 0
 p_pos_y = 4
 p_pos_x = 2
+π = 3.14
 loops.everyInterval(1000, function on_every_interval() {
     
     if (die == 0) {
@@ -192,6 +194,7 @@ basic.forever(function on_forever() {
     
     led.plot(p_pos_x, p_pos_y)
     if (die == 1) {
+        basic.clearScreen()
         basic.showString("score")
         basic.showNumber(score)
         basic.pause(1000)
