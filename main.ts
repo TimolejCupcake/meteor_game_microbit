@@ -41,16 +41,34 @@ input.onButtonPressed(Button.B, function on_button_pressed_b() {
     }
     
 })
-let score = 0
 let random = 0
+let score = 0
+let time = 0
 let die = 0
-let π = 0
 let p_pos_x = 0
 let p_pos_y = 0
 p_pos_y = 4
 p_pos_x = 2
-π = 3.14
-loops.everyInterval(1000, function on_every_interval() {
+let π = 3.14
+loops.everyInterval(500, function on_every_interval() {
+    
+    time += 1
+})
+basic.forever(function on_forever() {
+    
+    led.plot(p_pos_x, p_pos_y)
+    if (die == 1) {
+        basic.clearScreen()
+        basic.showString("score")
+        basic.showNumber(score)
+        basic.pause(1000)
+        basic.clearScreen()
+        basic.pause(1000)
+        die = 0
+    }
+    
+})
+loops.everyInterval(1100 - time * 100, function on_every_interval2() {
     
     if (die == 0) {
         random = randint(0, 4)
@@ -187,20 +205,6 @@ loops.everyInterval(1000, function on_every_interval() {
         }
         
         basic.pause(500)
-    }
-    
-})
-basic.forever(function on_forever() {
-    
-    led.plot(p_pos_x, p_pos_y)
-    if (die == 1) {
-        basic.clearScreen()
-        basic.showString("score")
-        basic.showNumber(score)
-        basic.pause(1000)
-        basic.clearScreen()
-        basic.pause(1000)
-        die = 0
     }
     
 })
